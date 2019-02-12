@@ -22,4 +22,31 @@ then move on to remove the .git folder and simply run
   
 to initialize a new git repository.
 
+Afterwards install all dependencies by running
+```
+npm i
+```
 
+## Usage
+
+This boilerplate contains two scripts in the package.json, one for development, one for production build.
+
+### Development
+
+Just run 
+```
+npm start
+```
+
+and a browser window with browser-sync should open.
+
+### Production
+Just run
+```
+npm run prod
+```
+
+to get a minified, production-ready bundle in the "dist" folder.
+
+## Customize
+Feel free to customize the webpack config for your needs. I commented out line 10 in "config/plugins.js" which is the within the CopyWebpackPlugin. It helps copying static files, such as images or fonts to the "tmp" and "dist" folders. webpack-dev-server is not working when the directory not exists, that's why I commented it out.
