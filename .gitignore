@@ -1,0 +1,7 @@
+node_modules
+dist
+tmp
+.vscode
+.idea
+npm-debug.log
+*.scss.d.ts

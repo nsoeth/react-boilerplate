@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 module.exports = merge(webpackConfig, {
   mode: 'development',
@@ -19,6 +20,13 @@ module.exports = merge(webpackConfig, {
     publicPath: '/'
   },
   plugins: [
+    new WebpackShellPlugin({
+      onBuildStart: ['node ./config/typedCssModules.js'],
+      dev: false
+    }),
+    new webpack.WatchIgnorePlugin([
+      /scss\.d\.ts$/
+    ]),
     new BrowserSyncPlugin({
       host: 'localhost',
       port: 3000,
@@ -28,6 +36,9 @@ module.exports = merge(webpackConfig, {
       filename: '[name].css',
       chunkFilename: '[id].css'
     }),
-    new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("development") })
+    new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("development") }),
+    new webpack.WatchIgnorePlugin([
+      /css\.d\.ts$/
+    ])
   ]
 });
