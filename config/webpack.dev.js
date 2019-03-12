@@ -25,7 +25,8 @@ module.exports = merge(webpackConfig, {
       dev: false
     }),
     new webpack.WatchIgnorePlugin([
-      /scss\.d\.ts$/
+      /scss\.d\.ts$/,
+      /css\.d\.ts$/
     ]),
     new BrowserSyncPlugin({
       host: 'localhost',
@@ -36,9 +37,6 @@ module.exports = merge(webpackConfig, {
       filename: '[name].css',
       chunkFilename: '[id].css'
     }),
-    new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("development") }),
-    new webpack.WatchIgnorePlugin([
-      /css\.d\.ts$/
-    ])
+    new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("development") })
   ]
 });

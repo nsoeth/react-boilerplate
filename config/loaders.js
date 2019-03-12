@@ -33,7 +33,14 @@ const postCSSLoader = {
 module.exports = [
   {
     test: /\.(ts|tsx)$/,
-    loaders: ['ts-loader']
+    use: [
+      {
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true
+        }
+      }
+    ]
   },
   {
     test: /\.html$/,

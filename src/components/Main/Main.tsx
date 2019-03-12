@@ -5,7 +5,9 @@ import * as styles from './Main.module.scss';
 export class Main extends React.Component<IMainProps, IMainState> {
   constructor(props: IMainProps, state: IMainState) {
     super(props);
-    this.state = state;
+    this.state = {
+      ...state
+    };
   }
 
   public render(): JSX.Element {
