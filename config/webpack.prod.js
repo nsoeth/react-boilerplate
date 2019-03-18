@@ -8,7 +8,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(webpackConfig, {
-  mode: 'production',
+  mode: 'development',
   entry: {
     app: [
       'babel-polyfill',
@@ -33,8 +33,7 @@ module.exports = merge(webpackConfig, {
     new MiniCssExtractPlugin({
       filename: '[name]-[hash].min.css',
       chunkFilename: '[id]-[hash].min.css'
-    }),
-    new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") })
+    })
   ],
   output: {
     path: config.dist,
