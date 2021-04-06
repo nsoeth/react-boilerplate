@@ -19,10 +19,12 @@ module.exports = merge(webpackConfig, {
     publicPath: '/'
   },
   plugins: [
-    new webpack.WatchIgnorePlugin([
-      /scss\.d\.ts$/,
-      /css\.d\.ts$/
-    ]),
+    new webpack.WatchIgnorePlugin({
+      paths: [
+        /scss\.d\.ts$/,
+        /css\.d\.ts$/
+      ]
+    }),
     new BrowserSyncPlugin({
       host: 'localhost',
       port: 3000,

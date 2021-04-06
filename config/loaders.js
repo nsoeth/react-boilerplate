@@ -30,6 +30,14 @@ const postCSSLoader = {
   }
 }
 
+const lessLoader = {
+  loader: 'less-loader',
+  options: {
+    javascriptEnabled: true,
+  },
+}
+
+
 module.exports = [
   {
     test: /\.(ts|tsx)$/,
@@ -44,7 +52,7 @@ module.exports = [
   },
   {
     test: /\.html$/,
-    loaders: ['html-loader']
+    loader: 'html-loader'
   },
   {
     test: /\.(scss|css)$/,
@@ -67,10 +75,32 @@ module.exports = [
   },
   {
     test: /\.(png|jpe?g|gif)$/,
-    loader: 'url-loader?name=/assets/[name].[hash].[ext]'
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          name: '/assets/[name].[hash].[ext]'
+        }
+      }
+    ]
   },
   {
     test: /\.(svg|woff|woff2|ttf|eot|ico)$/,
-    loader: 'file-loader?name=assets/fonts/[name].[ext]'
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          name: 'assets/fonts/[name].[ext]'
+        }
+      }
+    ]
+  },
+  {
+    test: /\.less$/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      CSSLoader,
+      lessLoader
+    ]
   }
 ]
