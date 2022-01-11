@@ -5,7 +5,9 @@ const CSSModuleLoader = {
   options: {
     modules: true,
     sourceMap: true,
-    localIdentName: '[local]__[hash:base64:5]'
+    modules: {
+      localIdentName: '[local]__[hash:base64:5]'
+    }
   }
 }
 
@@ -20,13 +22,15 @@ const CSSLoader = {
 const postCSSLoader = {
   loader: 'postcss-loader',
   options: {
-    ident: 'postcss',
-    sourceMap: true,
-    plugins: () => [
-      require('autoprefixer')({
-        browsers: ['>1%', 'last 2 versions']
-      })
-    ]
+    postcssOptions: {
+      ident: 'postcss',
+      sourceMap: true,
+      plugins: () => [
+        require('autoprefixer')({
+          browsers: ['>1%', 'last 2 versions']
+        })
+      ]
+    }
   }
 }
 

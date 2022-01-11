@@ -9,10 +9,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(webpackConfig, {
   mode: 'production',
-  devtool: '',
   entry: {
     app: [
-      'babel-polyfill',
       config.src + '/App.tsx'
     ]
   },
