@@ -1,5 +1,12 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const MiniCssExtractLoader = {
+  loader: MiniCssExtractPlugin.loader,
+  options: {
+    esModule: false
+  }
+};
+
 const CSSModuleLoader = {
   loader: 'css-loader',
   options: {
@@ -9,7 +16,7 @@ const CSSModuleLoader = {
       localIdentName: '[local]__[hash:base64:5]'
     }
   }
-}
+};
 
 const CSSLoader = {
   loader: 'css-loader',
@@ -17,7 +24,7 @@ const CSSLoader = {
     modules: false,
     sourceMap: true
   }
-}
+};
 
 const postCSSLoader = {
   loader: 'postcss-loader',
@@ -32,15 +39,7 @@ const postCSSLoader = {
       ]
     }
   }
-}
-
-const lessLoader = {
-  loader: 'less-loader',
-  options: {
-    javascriptEnabled: true,
-  },
-}
-
+};
 
 module.exports = [
   {
@@ -62,7 +61,7 @@ module.exports = [
     test: /\.(scss|css)$/,
     exclude: /\.module\.scss$/,
     use: [
-      MiniCssExtractPlugin.loader,
+      MiniCssExtractLoader,
       CSSLoader,
       postCSSLoader,
       'sass-loader'
@@ -71,7 +70,13 @@ module.exports = [
   {
     test: /\.module\.scss$/,
     use: [
-      MiniCssExtractPlugin.loader,
+      MiniCssExtractLoader,
+      {
+        loader: 'dts-css-modules-loader',
+        options: {
+          namedExport: true
+        }
+      },
       CSSModuleLoader,
       postCSSLoader,
       'sass-loader',
@@ -97,14 +102,6 @@ module.exports = [
           name: 'assets/fonts/[name].[ext]'
         }
       }
-    ]
-  },
-  {
-    test: /\.less$/,
-    use: [
-      MiniCssExtractPlugin.loader,
-      CSSLoader,
-      lessLoader
     ]
   }
 ]

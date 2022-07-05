@@ -1,10 +1,10 @@
 const webpack = require('webpack');
 const config = require('./main');
 const webpackConfig = require('./webpack');
-const merge = require('webpack-merge');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { merge } = require('webpack-merge');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(webpackConfig, {
@@ -17,13 +17,11 @@ module.exports = merge(webpackConfig, {
   optimization: {
     minimizer: [
       new TerserPlugin(),
-      new OptimizeCSSAssetsPlugin({})
+      new CssMinimizerPlugin()
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['*.js', '*.css'], {
-      root: config.dist
-    }),
+    new CleanWebpackPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name]-[hash].min.css',
@@ -33,6 +31,6 @@ module.exports = merge(webpackConfig, {
   output: {
     path: config.dist,
     filename: '[name]-[hash].min.js',
-    publicPath: '/'
+    publicPath: './'
   }
 });
