@@ -24,13 +24,13 @@ module.exports = merge(webpackConfig, {
     new CleanWebpackPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name]-[hash].min.css',
-      chunkFilename: '[id]-[hash].min.css'
+      filename: '[name]-[fullhash].min.css',
+      chunkFilename: '[id]-[fullhash].min.css'
     })
   ],
   output: {
     path: config.dist,
-    filename: '[name]-[hash].min.js',
+    filename: '[name]-[fullhash].min.js',
     publicPath: './'
   }
 });
