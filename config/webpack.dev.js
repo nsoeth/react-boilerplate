@@ -18,6 +18,11 @@ module.exports = merge(webpackConfig, {
     filename: '[name].bundle.js',
     publicPath: '/'
   },
+  devServer: {
+    client: {
+      overlay: false,
+    },
+  },
   plugins: [
     new webpack.WatchIgnorePlugin({
       paths: [
