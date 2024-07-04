@@ -2,7 +2,7 @@ const config = require('./main');
 const webpackConfig = require('./webpack');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-v3-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(webpackConfig, {
