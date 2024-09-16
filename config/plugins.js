@@ -6,9 +6,9 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 module.exports = [
   new HtmlWebpackPlugin({
     template: config.html
-  }),
-  // new CopyWebpackPlugin([
-  //   { from: 'src/assets', to: './assets' }
-  // ]),
+  }),  
+  // new CopyWebpackPlugin({
+  //   patterns: [{ from: 'src/assets', to: './assets' }]
+  // }),
   new ForkTsCheckerWebpackPlugin()
 ];
