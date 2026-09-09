@@ -60,12 +60,7 @@ module.exports = [
   {
     test: /\.(scss|css)$/,
     exclude: /\.module\.scss$/,
-    use: [
-      MiniCssExtractLoader,
-      CSSLoader,
-      postCSSLoader,
-      'sass-loader'
-    ]
+    use: [MiniCssExtractLoader, CSSLoader, postCSSLoader, 'sass-loader']
   },
   {
     test: /\.module\.scss$/,
@@ -79,7 +74,7 @@ module.exports = [
       },
       CSSModuleLoader,
       postCSSLoader,
-      'sass-loader',
+      'sass-loader'
     ]
   },
   {
@@ -104,4 +99,4 @@ module.exports = [
       }
     ]
   }
-]
+];

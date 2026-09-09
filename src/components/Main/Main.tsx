@@ -11,10 +11,6 @@ export class Main extends React.Component<IMainProps, IMainState> {
   }
 
   public render(): JSX.Element {
-    return (
-      <div className={styles.div}>
-        React Boilerplate! Is this a sample? {this.props.sample ? 'Yes' : 'No'}
-      </div>
-    );
+    return <div className={styles.div}>React Boilerplate! Is this a sample? {this.props.sample ? 'Yes' : 'No'}</div>;
   }
 }

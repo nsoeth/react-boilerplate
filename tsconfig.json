@@ -1,26 +1,17 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "*": [
-        "./types/*"
-      ]
+      "*": ["./types/*"]
     },
     "module": "commonjs",
-    "target": "es5",
-    "moduleResolution": "node",
+    "target": "es6",
     "sourceMap": true,
     "noImplicitAny": true,
     "skipLibCheck": true,
     "jsx": "react",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": [
-      "dom",
-      "es2015"
-    ]
+    "lib": ["dom", "es2015"]
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
